@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "property-ad8b7"
+    "default": "property-ad8b7",
+    "property": "property-ad8b7"
   }
 }
