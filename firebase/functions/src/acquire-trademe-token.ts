@@ -22,7 +22,7 @@ const urlEncode = (params) => {
   return encoded;
 }
 
-export const acquireTemporaryToken = functions.https.onRequest((request, response) => {
+export const acquireTrademeToken = functions.https.onRequest((request, response) => {
 
   const url = `${functions.config().trademe.api}/Oauth/RequestToken`;
 
