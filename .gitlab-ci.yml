@@ -16,5 +16,5 @@ deploy_production:
     - npm i
     - cd ..
     - firebase functions:config:set trademe.api=$TRADEME_API trademe.key=$TRADEME_CONSUMER_KEY trademe.secret=$TRADEME_CONSUMER_SECRET
-    - firebase use --token $FIREBASE_DEPLOY_KEY production
+    - firebase use --token $FIREBASE_DEPLOY_KEY property
     - firebase deploy -m "Pipeline $CI_PIPELINE_ID, build $CI_BUILD_ID" --non-interactive --token $FIREBASE_DEPLOY_KEY
