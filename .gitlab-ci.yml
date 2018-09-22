@@ -3,18 +3,18 @@ image: node:latest
 cache:
   paths:
     - node_modules/
-    - app/bower_components
 
-deploy_production:
+stages:
+  - deploy
+
+before_script:
+  - npm install -g firebase-tools
+  - npm --prefix ./firebase/functions install
+
+deploy_staging:
   stage: deploy
-  environment: Production
+  environment: staging
+  script:
+    - npm run deploy
   only:
     - master
-  script:
-    - npm install -g firebase-tools
-    - cd firebase/functions
-    - npm i
-    - cd ..
-    - firebase use property --token $FIREBASE_DEPLOY_KEY
-    - firebase functions:config:set trademe.api="$TRADEME_API" trademe.key="$TRADEME_CONSUMER_KEY" trademe.secret="$TRADEME_CONSUMER_SECRET"
-    - firebase deploy -m "Pipeline $CI_PIPELINE_ID, build $CI_BUILD_ID" --non-interactive --token $FIREBASE_DEPLOY_KEY
