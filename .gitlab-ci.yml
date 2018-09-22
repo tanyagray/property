@@ -9,12 +9,12 @@ stages:
 
 before_script:
   - npm install -g firebase-tools
-  - npm --prefix ./firebase/functions install
+  - npm --prefix ./functions install
 
 deploy_staging:
   stage: deploy
   environment: staging
   script:
-    - npm run deploy
+    - npm --prefix ./functions run deploy
   only:
     - master
